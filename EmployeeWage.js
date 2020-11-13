@@ -1,5 +1,4 @@
 console.log("Welcome to Employee Wage Program");
-//UC 6
 
 const IS_PART_TIME = 1;
 const IS_FULL_TIME = 2;
@@ -46,3 +45,30 @@ while (totalEmpHrs < MAX_HRS_IN_MONTH && totalWorkingDays < NUM_OF_WORKING_DAYS)
 console.log("Daily Wage Array: "+empDailyWageArr);
 console.log(employeeDailyWageMap);
 console.log(employeeDailyHrsMap);
+
+//UC 9
+const findTotalValue = (totalValue, dailyWage) => {
+    return totalValue + dailyWage;
+}
+{
+    let totalHrs = Array.from(employeeDailyHrsMap.values()).reduce(findTotalValue, 0);
+    let totalWageOfEmployee = empDailyWageArr.filter(dailyWage => dailyWage>0).reduce(findTotalValue, 0);
+
+    console.log("Using JS arrow function 'Total Hours' ===> "+totalHrs+" | Total Employee Wage ===> " + totalWageOfEmployee);
+}
+let fullTimeArray = new Array();
+let partTimeArray = new Array();
+let absentArray = new Array();
+
+
+employeeDailyHrsMap.forEach((value, key) => {
+if (value == 8) {
+    fullTimeArray.push(key);
+}
+else if(value == 4) {partTimeArray.push(key);}
+else {absentArray.push(key);}  
+} )
+
+console.log("Full time days: ", fullTimeArray);
+console.log("Part time days: ", partTimeArray);
+console.log("Absent days: ", absentArray);
