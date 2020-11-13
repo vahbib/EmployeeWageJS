@@ -12,6 +12,7 @@ let totalWorkingDays = 0;
 let empDailyWageArr = new Array();
 let employeeDailyHrsMap = new Map();
 let employeeDailyWageMap = new Map();
+let employeeObjectArray = new Array();
 
 function demo(options){
     switch(options){
@@ -41,6 +42,16 @@ while (totalEmpHrs < MAX_HRS_IN_MONTH && totalWorkingDays < NUM_OF_WORKING_DAYS)
 
      employeeDailyHrsMap.set(totalWorkingDays,empHrs);
      employeeDailyWageMap.set(totalWorkingDays, calcDailyWage(empHrs));
+
+     
+     employeeObjectArray.push({
+        dayNumber:totalWorkingDays,
+        dailyHrs:empHrs,
+        dailyWage:calcDailyWage(empHrs),
+        toString(){
+            return "\nDay=" +this.dayNumber +"\n Working hrs for the day ="+ this.dailyHrs +"\n wage is =" + this.dailyWage
+        },
+    });
 }
 console.log("Daily Wage Array: "+empDailyWageArr);
 console.log(employeeDailyWageMap);
@@ -72,3 +83,6 @@ else {absentArray.push(key);}
 console.log("Full time days: ", fullTimeArray);
 console.log("Part time days: ", partTimeArray);
 console.log("Absent days: ", absentArray);
+console.log("=======================UC 10++++++++++++++++++++++++");
+console.log(employeeObjectArray);
+console.log("=======================UC 10++++++++++++++++++++++++");
