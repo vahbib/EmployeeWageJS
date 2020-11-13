@@ -83,6 +83,15 @@ else {absentArray.push(key);}
 console.log("Full time days: ", fullTimeArray);
 console.log("Part time days: ", partTimeArray);
 console.log("Absent days: ", absentArray);
-console.log("=======================UC 10++++++++++++++++++++++++");
+console.log("=======================++++++++++++++++++++++++");
 console.log(employeeObjectArray);
-console.log("=======================UC 10++++++++++++++++++++++++");
+process.stdout.write("\n\n***Full working days***\n")
+let fullWorkingObjectArray = employeeObjectArray.filter(dailyWage => dailyWage.dailyHrs == 8)
+                    .forEach(dailyWage => process.stdout.write(dailyWage.toString()));
+process.stdout.write("\n\n***Part Time Days***\n")
+let partTimeWorkingObjectArray = employeeObjectArray.filter(dailyWage => dailyWage.dailyHrs == 4)
+                                    .forEach(dailyWage => process.stdout.write(dailyWage.toString()));
+process.stdout.write("\n\n***Absent Days***\n")
+let AbsentWorkingObjectArray = employeeObjectArray.filter(dailyWage => dailyWage.dailyHrs == 0)
+                                    .forEach(dailyWage => process.stdout.write(dailyWage.toString()));
+console.log("\n\n=======================++++++++++++++++++++++++");
